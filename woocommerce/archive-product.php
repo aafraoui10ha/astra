@@ -5,28 +5,48 @@ get_header('shop');
 
 <section>
     <div class="col-12">
-       <div class="" style="
+       <div class="hero-section" style="
     background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/skin-cleanser-template-about-page-header-img-bg.jpg');
-     background-size: cover;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 0;
     text-align: center;
     color: white;
-    height: 710px;
-    background-attachment: fixed;
-    top: 0;
     position: relative;
-    margin-top: -150px;">
-        <div class="row">
-            <div class="col-6">
-           <div  class="d-flex justify-content-end align-content-end">
-              <h1>Bienvenue dans notre Boutique</h1>
-        <p>Découvrez nos produits exclusifs</p>
-           </div>
-        </div>
-        </div>
-       </div>
+    margin-top: -150px;
+">
+  <div class="container d-flex justify-content-start align-items-end" style="min-height: 610px;">
+    <div class="text-left p-5">
+        <h1><?php single_cat_title(); ?></h1>
+        <!-- <p><?php echo category_description(); ?></p> -->
+    </div>
+  </div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+  .hero-section {
+    margin-top: 0;
+    background-attachment: scroll; /* Disable fixed on mobile */
+  }
+
+  .hero-section .container {
+    min-height: 400px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+}
+</style>
+
     </div>
 </section>
 

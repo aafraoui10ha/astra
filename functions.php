@@ -38,6 +38,16 @@ function enqueue_swiper_assets() {
 add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
 
 
+
+add_filter('woocommerce_currency_symbol', 'custom_woocommerce_currency_symbol', 10, 2);
+
+function custom_woocommerce_currency_symbol($currency_symbol, $currency) {
+    if ($currency === 'MAD') {
+        $currency_symbol = 'MAD'; 
+    }
+    return $currency_symbol;
+}
+
 /**
  * Define Constants
  */

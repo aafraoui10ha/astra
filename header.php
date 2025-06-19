@@ -75,5 +75,21 @@ if ( apply_filters( 'astra_header_profile_gmpg_link', true ) ) {
 		<div class="ast-container">
 		<?php astra_content_top(); ?>
 <style>
-       
-      </style>
+</style>
+<!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 1000, // مدة الحركة بالمللي ثانية
+      once: true // مرة واحدة فقط عند التمرير
+    });
+  });
+</script>
+	
+
+
