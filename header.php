@@ -39,6 +39,9 @@ if ( apply_filters( 'astra_header_profile_gmpg_link', true ) ) {
     <div class="circle"></div>
     <div class="circle circle2"></div>
   </div>
+  <div class="custom-cursor"></div>
+<div class="custom-cursor-dot"></div>
+
 <?php astra_body_top(); ?>
 <?php wp_body_open(); ?>
 
@@ -90,6 +93,33 @@ if ( apply_filters( 'astra_header_profile_gmpg_link', true ) ) {
     });
   });
 </script>
-	
+	<style>
+	.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+	</style>
 
 

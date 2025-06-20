@@ -46,6 +46,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 </script>
 
 <!-- loading end  -->
- 
+ <script>
+  const cursor = document.querySelector('.custom-cursor');
+  const cursorDot = document.querySelector('.custom-cursor-dot');
+
+  let mouseX = 0, mouseY = 0;
+  let dotX = 0, dotY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.left = `${mouseX}px`;
+    cursor.style.top = `${mouseY}px`;
+  });
+
+  function animateDot() {
+    // حركة تدريجية للنقطة
+    dotX += (mouseX - dotX) * 0.15;
+    dotY += (mouseY - dotY) * 0.15;
+
+    cursorDot.style.left = `${dotX}px`;
+    cursorDot.style.top = `${dotY}px`;
+
+    requestAnimationFrame(animateDot);
+  }
+
+  animateDot();
+
+  const links = document.querySelectorAll('a, button');
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+    });
+    link.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  });
+</script>
+
 	</body>
 </html>

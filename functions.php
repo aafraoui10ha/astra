@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Astra functions and definitions
  *
@@ -8,32 +9,34 @@
  * @since 1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
-function filetheme() {
-	wp_enqueue_style( 'frontcss-css', get_template_directory_uri() . '/assets/css/frontcss.css' );
-	wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' );
-	wp_enqueue_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), null, true );
-	   wp_enqueue_script(
-          'frontscript-js',
-          get_template_directory_uri() . '/assets/js/frontscript.js',
-          array(),
-          null,
-          true
-     );
+function filetheme()
+{
+	wp_enqueue_style('frontcss-css', get_template_directory_uri() . '/assets/css/frontcss.css');
+	wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+	wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), null, true);
+	wp_enqueue_script(
+		'frontscript-js',
+		get_template_directory_uri() . '/assets/js/frontscript.js',
+		array(),
+		null,
+		true
+	);
 }
-add_action( 'wp_enqueue_scripts' , 'filetheme' );
+add_action('wp_enqueue_scripts', 'filetheme');
 
 
-function enqueue_swiper_assets() {
-    // Swiper CSS
-    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+function enqueue_swiper_assets()
+{
+	// Swiper CSS
+	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
 
-    // Swiper JS
-    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+	// Swiper JS
+	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 
-    wp_enqueue_script('swiper-init', get_template_directory_uri() . '/assets/js/swiper-init.js', array('swiper-js'), null, true);
+	wp_enqueue_script('swiper-init', get_template_directory_uri() . '/assets/js/swiper-init.js', array('swiper-js'), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
 
@@ -41,32 +44,77 @@ add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
 
 add_filter('woocommerce_currency_symbol', 'custom_woocommerce_currency_symbol', 10, 2);
 
-function custom_woocommerce_currency_symbol($currency_symbol, $currency) {
-    if ($currency === 'MAD') {
-        $currency_symbol = 'MAD'; 
-    }
-    return $currency_symbol;
+function custom_woocommerce_currency_symbol($currency_symbol, $currency)
+{
+	if ($currency === 'MAD') {
+		$currency_symbol = 'MAD';
+	}
+	return $currency_symbol;
 }
+
+
+
+add_filter('nav_menu_css_class', 'highlight_blog_menu_item', 10, 2);
+function highlight_blog_menu_item($classes, $item)
+{
+	$blog_page_id = get_option('page_for_posts');
+
+	if (
+		(
+			(is_single() && get_post_type() === 'post') ||
+			is_category() ||
+			is_tag()
+		)
+		&& $item->object_id == $blog_page_id
+	) {
+		$classes[] = 'current-menu-item';
+	}
+
+	return $classes;
+}
+
+add_filter('nav_menu_css_class', 'highlight_shop_menu_item', 10, 2);
+function highlight_shop_menu_item($classes, $item)
+{
+	$shop_page_id = wc_get_page_id('shop');
+
+	if (
+		(
+			is_shop() ||
+			is_cart() ||
+			is_checkout() ||
+			is_singular('product')
+		)
+		&& $item->object_id == $shop_page_id
+	) {
+		$classes[] = 'current-menu-item';
+	}
+
+	return $classes;
+}
+
+
+
 
 /**
  * Define Constants
  */
-define( 'ASTRA_THEME_VERSION', '4.11.3' );
-define( 'ASTRA_THEME_SETTINGS', 'astra-settings' );
-define( 'ASTRA_THEME_DIR', trailingslashit( get_template_directory() ) );
-define( 'ASTRA_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
-define( 'ASTRA_THEME_ORG_VERSION', file_exists( ASTRA_THEME_DIR . 'inc/w-org-version.php' ) );
+define('ASTRA_THEME_VERSION', '4.11.3');
+define('ASTRA_THEME_SETTINGS', 'astra-settings');
+define('ASTRA_THEME_DIR', trailingslashit(get_template_directory()));
+define('ASTRA_THEME_URI', trailingslashit(esc_url(get_template_directory_uri())));
+define('ASTRA_THEME_ORG_VERSION', file_exists(ASTRA_THEME_DIR . 'inc/w-org-version.php'));
 
 /**
  * Minimum Version requirement of the Astra Pro addon.
  * This constant will be used to display the notice asking user to update the Astra addon to the version defined below.
  */
-define( 'ASTRA_EXT_MIN_VER', '4.11.1' );
+define('ASTRA_EXT_MIN_VER', '4.11.1');
 
 /**
  * Load in-house compatibility.
  */
-if ( ASTRA_THEME_ORG_VERSION ) {
+if (ASTRA_THEME_ORG_VERSION) {
 	require_once ASTRA_THEME_DIR . 'inc/w-org-version.php';
 }
 
@@ -78,13 +126,13 @@ require_once ASTRA_THEME_DIR . 'inc/core/class-theme-strings.php';
 require_once ASTRA_THEME_DIR . 'inc/core/common-functions.php';
 require_once ASTRA_THEME_DIR . 'inc/core/class-astra-icons.php';
 
-define( 'ASTRA_WEBSITE_BASE_URL', 'https://wpastra.com' );
+define('ASTRA_WEBSITE_BASE_URL', 'https://wpastra.com');
 
 /**
  * ToDo: Deprecate constants in future versions as they are no longer used in the codebase.
  */
-define( 'ASTRA_PRO_UPGRADE_URL', ASTRA_THEME_ORG_VERSION ? astra_get_pro_url( '/pricing/', 'free-theme', 'dashboard', 'upgrade' ) : 'https://woocommerce.com/products/astra-pro/' );
-define( 'ASTRA_PRO_CUSTOMIZER_UPGRADE_URL', ASTRA_THEME_ORG_VERSION ? astra_get_pro_url( '/pricing/', 'free-theme', 'customizer', 'upgrade' ) : 'https://woocommerce.com/products/astra-pro/' );
+define('ASTRA_PRO_UPGRADE_URL', ASTRA_THEME_ORG_VERSION ? astra_get_pro_url('/pricing/', 'free-theme', 'dashboard', 'upgrade') : 'https://woocommerce.com/products/astra-pro/');
+define('ASTRA_PRO_CUSTOMIZER_UPGRADE_URL', ASTRA_THEME_ORG_VERSION ? astra_get_pro_url('/pricing/', 'free-theme', 'customizer', 'upgrade') : 'https://woocommerce.com/products/astra-pro/');
 
 /**
  * Update theme
@@ -96,7 +144,7 @@ require_once ASTRA_THEME_DIR . 'inc/theme-update/class-astra-theme-background-up
  * Fonts Files
  */
 require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-font-families.php';
-if ( is_admin() ) {
+if (is_admin()) {
 	require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-fonts-data.php';
 }
 
@@ -119,7 +167,7 @@ require_once ASTRA_THEME_DIR . 'inc/class-astra-dynamic-css.php';
 require_once ASTRA_THEME_DIR . 'inc/class-astra-global-palette.php';
 
 // Enable NPS Survey only if the starter templates version is < 4.3.7 or > 4.4.4 to prevent fatal error.
-if ( ! defined( 'ASTRA_SITES_VER' ) || version_compare( ASTRA_SITES_VER, '4.3.7', '<' ) || version_compare( ASTRA_SITES_VER, '4.4.4', '>' ) ) {
+if (! defined('ASTRA_SITES_VER') || version_compare(ASTRA_SITES_VER, '4.3.7', '<') || version_compare(ASTRA_SITES_VER, '4.4.4', '>')) {
 	// NPS Survey Integration
 	require_once ASTRA_THEME_DIR . 'inc/lib/class-astra-nps-notice.php';
 	require_once ASTRA_THEME_DIR . 'inc/lib/class-astra-nps-survey.php';
@@ -165,7 +213,7 @@ require_once ASTRA_THEME_DIR . 'inc/schema/class-astra-schema.php';
 /* Setup API */
 require_once ASTRA_THEME_DIR . 'admin/includes/class-astra-api-init.php';
 
-if ( is_admin() ) {
+if (is_admin()) {
 	/**
 	 * Admin Menu Settings
 	 */
@@ -221,14 +269,14 @@ require_once ASTRA_THEME_DIR . 'inc/addons/heading-colors/class-astra-heading-co
 require_once ASTRA_THEME_DIR . 'inc/builder/class-astra-builder-loader.php';
 
 // Elementor Compatibility requires PHP 5.4 for namespaces.
-if ( version_compare( PHP_VERSION, '5.4', '>=' ) ) {
+if (version_compare(PHP_VERSION, '5.4', '>=')) {
 	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-elementor.php';
 	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-elementor-pro.php';
 	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-web-stories.php';
 }
 
 // Beaver Themer compatibility requires PHP 5.3 for anonymous functions.
-if ( version_compare( PHP_VERSION, '5.3', '>=' ) ) {
+if (version_compare(PHP_VERSION, '5.3', '>=')) {
 	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-beaver-themer.php';
 }
 
@@ -240,5 +288,3 @@ require_once ASTRA_THEME_DIR . 'inc/core/markup/class-astra-markup.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-filters.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
-
-
