@@ -1,22 +1,24 @@
 :root {
-  --color-beige: #c8ad94;
-  --color-bronze: #9b6943;
-  --color-olive: #646246;
-  --color-brownish: #6c5741;
+  --color-beige: #f2e5d5;
+  --color-bronze: #ddbea9;
+  --color-olive: #8ea48b;
+  --color-brownish: #d9e4d7;
+  --color-green : #477023;
+  --color-greenwhite : #98c9ae;
 }
 
 /* line */
 .line {
   width: 90px !important;
   height: 1px;
-  background-color: #000;
+  background-color: var(--color-green);
   border-radius: 2px;
 }
 
 /*  */
 body,
-section {
-  background: #f1ebe6 !important;
+section{
+  background: var(--color-beige) !important;
 }
 
 .hover-a {
@@ -24,16 +26,18 @@ section {
 }
 
 .hover-a:hover {
-  color: var(--color-bronze);
+  color: var(--color-green);
 }
 
 .swiper {
   width: 100%;
   height: 300px;
 }
-
+.ast-woo-sidebar-widget,.ast-woocommerce-container,.woocommerce-product-gallery,.ast-article-single,.ast-grid-common-col,.ast-row,.ast-separate-container .ast-article-single:not(.ast-related-post), .woocommerce.ast-separate-container .ast-woocommerce-container, .ast-separate-container .error-404, .ast-separate-container .no-results, .single.ast-separate-container .ast-author-meta, .ast-separate-container .related-posts-title-wrapper, .ast-separate-container .comments-count-wrapper, .ast-box-layout.ast-plain-container .site-content, .ast-padded-layout.ast-plain-container .site-content, .ast-separate-container .ast-archive-description, .ast-separate-container .comments-area .comment-respond, .ast-separate-container .comments-area .ast-comment-list li, .ast-separate-container .comments-area .comments-title{
+  background-color: var(--color-beige)  !important;
+}
 .swiper-slide {
-  background: #eee;
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,8 +113,9 @@ section {
   height: 44px !important;
   border-radius: 50%;
   background: var(--color-olive);
-  color: var(--color-beige) !important;
+  color: #000 !important;
   transition: all 0.3s ease;
+    border: 1px solid #000 !important;
 }
 
 .swiper-button-prev::after,
@@ -122,9 +127,10 @@ section {
 .swiper-button-next:hover {
   width: 46px !important;
   height: 46px !important;
+  border: 1px solid #000 !important;
   border-radius: 50%;
-  background: var(--color-olive);
-  color: var(--color-beige) !important;
+  background: var(--color-green);
+  color: var(--color-bronze) !important;
   transform: scale(1.1);
 }
 
@@ -136,11 +142,13 @@ section {
   margin: 0 6px !important;
   border-radius: 4px !important;
   transition: all 0.3s ease !important;
+    border: 1px solid #000 !important;
 }
 
 .swiper-pagination-bullet-active {
   width: 30px !important;
   height: 10px !important;
+  border: 1px solid #000 !important;
   background-color: var(--color-olive) !important;
   border-radius: 5px !important;
 }
@@ -183,15 +191,20 @@ section {
 
 .btn1:hover::after {
   bottom: 0;
-  color: #fff !important;
+  color: #000 !important;
 }
-
+h1,h2{
+  color:  var(--color-green) !important ;
+}
 .btn1 span,
 .btn1 i {
   position: relative;
   z-index: 1;
 }
-
+a:hover {
+  color: var(--color-green) !important;
+  text-decoration: none;
+}
 /* loader */
 #loader {
   position: fixed;
@@ -211,7 +224,7 @@ section {
   width: 60px;
   height: 60px;
   border: 5px solid transparent;
-  border-top-color: var(--color-olive);
+  border-top-color: var(--color-green);
   border-radius: 50%;
   animation: spin 1.5s linear infinite;
 }
@@ -220,7 +233,7 @@ section {
   width: 80px;
   height: 80px;
   border: 5px solid transparent;
-  border-bottom-color: #ffffff;
+  border-bottom-color: var(--color-greenwhite);
   animation: spin-reverse 2s linear infinite;
 }
 
@@ -280,14 +293,14 @@ section {
 .cart-cmnt:hover {
   width: 100%;
   height: auto;
-  background: rgba(0, 0, 0, 0.1); 
-  backdrop-filter: blur(10px);         
-  -webkit-backdrop-filter: blur(10px);  
-  border: 1px solid #000; 
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #000;
   border-radius: 10px;
   color: #000;
   padding: 10px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
   animation: fadeInUp 0.6s ease forwards;
 }
@@ -297,6 +310,7 @@ section {
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -373,22 +387,80 @@ section {
 .checkout-button button,
 .alt,
 .wc-forward {
-  background-color: #000 !important;
-  color: #fff !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  margin-top: 20px !important;
-  cursor: pointer !important;
-  transition: background-color 0.3s ease !important;
+padding: 15px 30px !important;
+  border: 1px solid #000!important;
+  border-radius: 15px!important;
+  text-decoration: none!important;
+  color: #000!important;
+  background: var(--color-beige)!important;
+  transition: all 0.3s ease-in-out!important;
+  cursor: pointer!important;
 }
 
 .checkout-button button:hover,
 .alt:hover,
 .wc-forward:hover {
-  background-color: var(--color-bronze) !important;
+  background-color: var(--color-greenwhite) !important;
+  color: var(--color-green) !important;
 }
 
 
 
+/* cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease;
+}
 
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
 
+.image-box {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .image-box:hover img {
+    transform: scale(1.1);
+    /* Zoom In */
+  }
+
+  .image-text {
+    position: absolute;
+    top: 70%;
+    left: 2%;
+
+    color: white;
+    font-size: 1rem;
+    z-index: 2;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    margin: 0;
+  }

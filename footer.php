@@ -62,7 +62,6 @@ if ( ! defined( 'ABSPATH' ) ) {
   });
 
   function animateDot() {
-    // حركة تدريجية للنقطة
     dotX += (mouseX - dotX) * 0.15;
     dotY += (mouseY - dotY) * 0.15;
 

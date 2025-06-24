@@ -99,7 +99,7 @@
         <p class="mt-3 mt-md-0" data-aos="fade-left" data-aos-delay="300">
           <?php
           $post_count = wp_count_posts('post')->publish;
-          echo 'All posts : ' . $post_count;
+          echo 'Showing all '.$post_count.' results';
           ?>
         </p>
       </div>

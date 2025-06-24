@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for Astra Theme.
  *
@@ -10,116 +11,87 @@
  * @since 1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+if (! defined('ABSPATH')) {
+  exit; // Exit if accessed directly.
 }
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <?php astra_html_before(); ?>
 <html <?php language_attributes(); ?>>
+
 <head>
-<?php astra_head_top(); ?>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<?php
-if ( apply_filters( 'astra_header_profile_gmpg_link', true ) ) {
-	?>
-	<link rel="profile" href="https://gmpg.org/xfn/11"> 
-	<?php
-}
-?>
-<?php wp_head(); ?>
-<?php astra_head_bottom(); ?>
+  <?php astra_head_top(); ?>
+  <meta charset="<?php bloginfo('charset'); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php
+  if (apply_filters('astra_header_profile_gmpg_link', true)) {
+  ?>
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+  <?php
+  }
+  ?>
+  <?php wp_head(); ?>
+  <?php astra_head_bottom(); ?>
 </head>
 
 
 
 <body <?php astra_schema_body(); ?> <?php body_class(); ?>>
-<div id="loader">
+  <div id="loader">
     <div class="circle"></div>
     <div class="circle circle2"></div>
   </div>
   <div class="custom-cursor"></div>
-<div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-dot"></div>
 
-<?php astra_body_top(); ?>
-<?php wp_body_open(); ?>
+  <?php astra_body_top(); ?>
+  <?php wp_body_open(); ?>
 
-<a
-	class="skip-link screen-reader-text"
-	href="#content"
-	title="<?php echo esc_attr( astra_default_strings( 'string-header-skip-link', false ) ); ?>">
-		<?php echo esc_html( astra_default_strings( 'string-header-skip-link', false ) ); ?>
-</a>
+  <a
+    class="skip-link screen-reader-text"
+    href="#content"
+    title="<?php echo esc_attr(astra_default_strings('string-header-skip-link', false)); ?>">
+    <?php echo esc_html(astra_default_strings('string-header-skip-link', false)); ?>
+  </a>
 
-<div
-<?php
-	echo wp_kses_post(
-		astra_attr(
-			'site',
-			array(
-				'id'    => 'page',
-				'class' => 'hfeed site',
-			)
-		)
-	);
-	?>
->
-	<?php
-	astra_header_before();
+  <div
+    <?php
+    echo wp_kses_post(
+      astra_attr(
+        'site',
+        array(
+          'id'    => 'page',
+          'class' => 'hfeed site',
+        )
+      )
+    );
+    ?>>
+    <?php
+    astra_header_before();
 
-	astra_header();
+    astra_header();
 
-	astra_header_after();
+    astra_header_after();
 
-	astra_content_before();
-	?>
-	<div id="content" class="site-content">
-		<div class="ast-container">
-		<?php astra_content_top(); ?>
-<style>
-</style>
-<!-- AOS CSS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    astra_content_before();
+    ?>
+    <div id="content" class="site-content">
+      <div class="ast-container">
+        <?php astra_content_top(); ?>
+        
+        <!-- AOS CSS -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<!-- AOS JS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- AOS JS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    AOS.init({
-      duration: 1000, // مدة الحركة بالمللي ثانية
-      once: true // مرة واحدة فقط عند التمرير
-    });
-  });
-</script>
-	<style>
-	.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease;
-}
-
-.custom-cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  background-color: #000;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-}
-	</style>
-
-
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            AOS.init({
+              duration: 1000,
+              once: true
+            });
+          });
+        </script>
+     

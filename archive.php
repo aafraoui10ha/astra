@@ -198,7 +198,10 @@ $is_blog = is_home() || is_archive() || is_category() || is_tag();
 									<img class="img-fluid productimg blog-item" src="<?php echo get_template_directory_uri(); ?>/assets/img/default.jpg" alt="default image">
 								<?php endif; ?>
 								<p class="blog-text"><?php echo esc_html($post_title); ?></p>
-								<p class="blog-date"><?php echo 'Date: ' . esc_html($post_date); ?></p>
+								<?php
+								$post_date = get_the_date('F j, Y');
+								?>
+								<p class="blog-date"><?php echo esc_html($post_date); ?></p>
 							</div>
 						</a>
 					</div>
