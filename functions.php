@@ -93,6 +93,12 @@ function highlight_shop_menu_item($classes, $item)
 	return $classes;
 }
 
+// for image quality
+// This filter sets the quality of images uploaded to the media library to 100%.
+add_filter('wp_editor_set_quality', function($quality) {
+    return 100;
+});
+
 
 
 

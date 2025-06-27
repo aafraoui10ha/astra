@@ -2,7 +2,7 @@
 
 <section class="hero-section" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/skin-cleanser-template-about-page-header-img-bg.jpg')!important;">
   <div class="overlay">
-    <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="container  d-flex flex-column justify-content-center align-items-center text-center">
       <h1 class="hero-title" data-aos="fade-right" data-aos-delay="300">The Blog</h1>
       <p class="hero-description col-md-6" data-aos="fade-right" data-aos-delay="300">Enim lectus mauris faucibus turpis convallis ipsum odio lorem dignissim odio
         enim nullam venenatis erat cursus tortor tristique aliquam nulla.
@@ -78,28 +78,35 @@
   <div class="container">
     <div class="row justify-content-between align-items-center gy-3">
 
+      <!-- Filtrage par catégorie -->
       <div class="col-md-6 col-12 text-md-start text-center">
         <h3 class="mb-3" data-aos="fade-right" data-aos-delay="300">Filter by Category</h3>
-        <div class="category-list d-flex flex-wrap justify-content-md-start justify-content-center gap-2">
-          <?php
-          $post_categories = get_categories([
-            'taxonomy'   => 'category',
-            'hide_empty' => true,
-          ]);
 
-          foreach ($post_categories as $category) {
-            $category_link = get_category_link($category->term_id);
-            echo '<button data-aos="fade-up" data-aos-delay="300"><a class="text-decoration-none btn1 text-lowercase" href="' . esc_url($category_link) . '">' . esc_html($category->name) . '</a></button>&nbsp;';
-          }
-          ?>
-        </div>
+        <nav class="category-list d-flex flex-wrap justify-content-md-start justify-content-center gap-2" aria-label="Catégories de blog">
+          <ul class="list-unstyled m-0 d-flex flex-wrap gap-2">
+            <?php
+            $post_categories = get_categories([
+              'taxonomy'   => 'category',
+              'hide_empty' => true,
+            ]);
+
+            foreach ($post_categories as $category) {
+              $category_link = get_category_link($category->term_id);
+              echo '<li data-aos="fade-up" data-aos-delay="300">
+                      <a href="' . esc_url($category_link) . '" class="text-decoration-none btn1 text-lowercase" aria-label="Voir les articles dans la catégorie ' . esc_attr($category->name) . '" itemprop="url">' . esc_html($category->name) . '</a>
+                    </li>';
+            }
+            ?>
+          </ul>
+        </nav>
       </div>
 
+      <!-- Résultat compteur -->
       <div class="col-md-4 col-12 text-md-end text-center">
         <p class="mt-3 mt-md-0" data-aos="fade-left" data-aos-delay="300">
           <?php
           $post_count = wp_count_posts('post')->publish;
-          echo 'Showing all '.$post_count.' results';
+          echo 'Showing all ' . $post_count . ' results';
           ?>
         </p>
       </div>
@@ -107,6 +114,7 @@
     </div>
   </div>
 </section>
+
 
 <style>
   .category-list-section {
@@ -161,6 +169,7 @@
                 $post_date = get_the_date('F j, Y');
                 ?>
                 <p class="blog-date"><?php echo esc_html($post_date); ?></p>
+                
               </div>
             </a>
           </div>

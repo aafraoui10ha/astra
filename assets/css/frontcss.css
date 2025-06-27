@@ -12,13 +12,13 @@
   width: 90px !important;
   height: 1px;
   background-color: var(--color-green);
-  border-radius: 2px;
+  border-radius: 2px; 
 }
 
 /*  */
 body,
-section{
-  background: var(--color-beige) !important;
+section,.ast-woo-sidebar-widget,.ast-woocommerce-container,.woocommerce-product-gallery,.ast-article-single,.ast-grid-common-col,.ast-row,.ast-separate-container .ast-article-single:not(.ast-related-post), .woocommerce.ast-separate-container .ast-woocommerce-container, .ast-separate-container .error-404, .ast-separate-container .no-results, .single.ast-separate-container .ast-author-meta, .ast-separate-container .related-posts-title-wrapper, .ast-separate-container .comments-count-wrapper, .ast-box-layout.ast-plain-container .site-content, .ast-padded-layout.ast-plain-container .site-content, .ast-separate-container .ast-archive-description, .ast-separate-container .comments-area .comment-respond, .ast-separate-container .comments-area .ast-comment-list li, .ast-separate-container .comments-area .comments-title{
+  background: #f3fbf3!important;
 }
 
 .hover-a {
@@ -33,9 +33,7 @@ section{
   width: 100%;
   height: 300px;
 }
-.ast-woo-sidebar-widget,.ast-woocommerce-container,.woocommerce-product-gallery,.ast-article-single,.ast-grid-common-col,.ast-row,.ast-separate-container .ast-article-single:not(.ast-related-post), .woocommerce.ast-separate-container .ast-woocommerce-container, .ast-separate-container .error-404, .ast-separate-container .no-results, .single.ast-separate-container .ast-author-meta, .ast-separate-container .related-posts-title-wrapper, .ast-separate-container .comments-count-wrapper, .ast-box-layout.ast-plain-container .site-content, .ast-padded-layout.ast-plain-container .site-content, .ast-separate-container .ast-archive-description, .ast-separate-container .comments-area .comment-respond, .ast-separate-container .comments-area .ast-comment-list li, .ast-separate-container .comments-area .comments-title{
-  background-color: var(--color-beige)  !important;
-}
+
 .swiper-slide {
   background: #000;
   display: flex;
@@ -172,7 +170,7 @@ section{
   border-radius: 15px;
   text-decoration: none;
   color: #000;
-  background: var(--color-beige);
+  background: #ffffff;
   transition: all 0.3s ease-in-out;
 }
 
@@ -212,7 +210,7 @@ a:hover {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--color-beige);
+  background-color: #ffffff;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -258,7 +256,7 @@ a:hover {
 
 .category-img-wrapper:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(35, 67, 31, 0.349);
 }
 
 .category-img {
@@ -392,7 +390,7 @@ padding: 15px 30px !important;
   border-radius: 15px!important;
   text-decoration: none!important;
   color: #000!important;
-  background: var(--color-beige)!important;
+  background:#ffffff!important;
   transition: all 0.3s ease-in-out!important;
   cursor: pointer!important;
 }

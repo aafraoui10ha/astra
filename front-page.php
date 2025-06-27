@@ -147,15 +147,17 @@
 
   <!-- end category section -->
   <!-- section 3 -->
-  <section class="py-5">
-    <div class="p-5" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/skin-cleanser-template-hero-img-bg.jpg');
-height: auto;background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment:fixed;
-">
+  <section class="py-5" itemscope itemtype="https://schema.org/Product">
+    <div class="p-5 lazy-background" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/skin-cleanser-template-hero-img-bg.jpg"
+      style="background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment:fixed;">
+
       <div class="row align-items-center">
 
         <!-- Colonne gauche : Titre + texte -->
         <div class="col-md-8">
-          <h2 class="text-uppercase font-weight-bold mb-3" data-aos="fade-right" data-aos-delay="300">Our Products</h2>
+          <h2 class="text-uppercase font-weight-bold mb-3" data-aos="fade-right" data-aos-delay="300">
+            Discover Our Organic & Natural Skin Products
+          </h2>
           <span class="line d-block mb-4" data-aos="fade-left" data-aos-delay="300"></span>
           <p class="lead text-muted" data-aos="fade-up" data-aos-delay="300">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, dignissimos provident aliquam perferendis earum fuga saepe dolorum recusandae, ipsum nostrum hic tempore tempora quidem velit fugiat, repellat iure delectus quaerat!
@@ -164,9 +166,10 @@ height: auto;background-size: cover; background-position: center; background-rep
 
         <!-- Colonne droite : bouton -->
         <div class="col-md-4 text-md-right text-center mt-4 mt-md-0">
-          <a href="#" class="btn1" data-aos="fade-left" data-aos-delay="300">
-            <span class="text-uppercase">En savoir plus</span>
+          <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="btn1" aria-label="Découvrez nos produits de soin naturels" data-aos="fade-left" data-aos-delay="300">
+            Découvrez nos produits
           </a>
+       
         </div>
 
       </div>
@@ -174,49 +177,57 @@ height: auto;background-size: cover; background-position: center; background-rep
   </section>
   <!-- end section 3  -->
   <!-- section 4 -->
-  <section class="custom-section" id="heroSection">
+  <section class="custom-section" id="heroSection" itemscope itemtype="https://schema.org/Product">
     <div class="container position-relative overflow-hidden py-5">
       <div class="row align-items-center justify-content-center flex-md-row flex-column-reverse">
 
-
-
         <!-- Image Content -->
         <div class="col-md-6 image-content text-center" id="imageContent">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/Coffret_Energie_Rituel_du_Matin_Hendiya_Organic.webp" class="img-fluid main-image" alt="">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/Coffret_Energie_Rituel_du_Matin_Hendiya_Organic.webp"
+            class="img-fluid main-image"
+            alt="Coffret d'énergie rituel du matin Hendiya Organic"
+            itemprop="image"
+            loading="lazy">
         </div>
 
         <!-- Text Content -->
-        <div class="col-md-6 text-content px-4 justify-content-center align-content-center" id="textContent">
-
+        <div class="col-md-6 text-content px-4 justify-content-center align-content-center" id="textContent" itemprop="description">
           <div class="d-flex flex-column justify-content-center align-items-center text-center mb-5">
-            <h2 class="text-uppercase" data-aos="fade-up" data-aos-delay="300">Coffret d'énergie rituel du matin</h2>
-            <span class="line "></span>
+            <h2 class="text-uppercase" data-aos="fade-up" data-aos-delay="300" itemprop="name">
+              Coffret d'énergie rituel du matin
+            </h2>
+            <span class="line"></span>
           </div>
 
-          <h3><a href="#" class="text-uppercase text-decoration-none text-dark">Coffret d'énergie rituel</a></h3>
-          <p>The Energy Set - Morning RitualDh 520.00 MADDh 650.00 MAD</p>
-          <p>The Energy Set combines the 4 steps of our morning ritual, 4 fresh natural treatments designed to gently awaken the skin, starting with cleansing, then&...</p>
-          <a href="#" class="btn1">En savoir plus</a>
+          <h3><a href="#" class="text-uppercase text-decoration-none text-dark" itemprop="url">Coffret d'énergie rituel</a></h3>
+
+          <p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="MAD" />
+              <span itemprop="price">520.00</span> MAD <span class="text-muted"><s>650.00 MAD</s></span>
+            </span></p>
+
+          <p>The Energy Set combines the 4 steps of our morning ritual, 4 fresh natural treatments designed to gently awaken the skin, starting with cleansing, then...</p>
+
+          <a href="#" class="btn1" aria-label="Voir les détails du coffret d'énergie rituel">En savoir plus</a>
         </div>
 
       </div>
     </div>
+
     <script>
-      // section 3
       // JavaScript: Add class "active" on hover
       document.addEventListener("DOMContentLoaded", function() {
         const section = document.getElementById("heroSection");
-
         section.addEventListener("mouseenter", function() {
           section.classList.add("active");
         });
-
         section.addEventListener("mouseleave", function() {
           section.classList.remove("active");
         });
       });
     </script>
   </section>
+
 
 
 
@@ -313,19 +324,27 @@ height: auto;background-size: cover; background-position: center; background-rep
             $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
             $post_title = get_the_title();
             $post_link  = get_permalink();
+            $alt_text   = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
         ?>
-            <div class="col-12 col-md-6 col-lg-3 mb-3">
-              <a href="<?php echo esc_url($post_link); ?>" class="text-decoration-none">
+            <article class="col-12 col-md-6 col-lg-3 mb-3" itemscope itemtype="https://schema.org/BlogPosting">
+              <a href="<?php echo esc_url($post_link); ?>" class="text-decoration-none" itemprop="url">
                 <div class="image-box position-relative overflow-hidden" data-aos="fade-right" data-aos-delay="<?php echo $delay; ?>">
                   <?php if ($image_url): ?>
-                    <img class="img-fluid productimg" src="<?php echo esc_url($image_url); ?>" alt="<?php the_title_attribute(); ?>">
+                    <img class="img-fluid productimg"
+                      src="<?php echo esc_url($image_url); ?>"
+                      alt="<?php echo esc_attr($alt_text ?: $post_title); ?>"
+                      itemprop="image"
+                      loading="lazy">
                   <?php else: ?>
-                    <img class="img-fluid productimg" src="<?php echo get_template_directory_uri(); ?>/assets/img/default.jpg" alt="default image">
+                    <img class="img-fluid productimg"
+                      src="<?php echo get_template_directory_uri(); ?>/assets/img/default.jpg"
+                      alt="Default image"
+                      loading="lazy">
                   <?php endif; ?>
-                  <p class="image-text"><?php echo esc_html($post_title); ?></p>
+                  <p class="image-text" itemprop="headline"><?php echo esc_html($post_title); ?></p>
                 </div>
               </a>
-            </div>
+            </article>
         <?php
             $delay += 400;
           endwhile;
@@ -337,8 +356,17 @@ height: auto;background-size: cover; background-position: center; background-rep
   </section>
 
 
+
   <!-- section 5 end -->
 </div>
-
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const lazyBg = document.querySelectorAll(".lazy-background");
+    lazyBg.forEach(el => {
+      const bg = el.getAttribute("data-bg");
+      if (bg) el.style.backgroundImage = `url('${bg}')`;
+    });
+  });
+</script>
 
 <?php get_footer(); ?>
