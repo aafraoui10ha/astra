@@ -18,7 +18,16 @@
 /*  */
 body,
 section,.ast-woo-sidebar-widget,.ast-woocommerce-container,.woocommerce-product-gallery,.ast-article-single,.ast-grid-common-col,.ast-row,.ast-separate-container .ast-article-single:not(.ast-related-post), .woocommerce.ast-separate-container .ast-woocommerce-container, .ast-separate-container .error-404, .ast-separate-container .no-results, .single.ast-separate-container .ast-author-meta, .ast-separate-container .related-posts-title-wrapper, .ast-separate-container .comments-count-wrapper, .ast-box-layout.ast-plain-container .site-content, .ast-padded-layout.ast-plain-container .site-content, .ast-separate-container .ast-archive-description, .ast-separate-container .comments-area .comment-respond, .ast-separate-container .comments-area .ast-comment-list li, .ast-separate-container .comments-area .comments-title{
-  background: #f3fbf3!important;
+  background: #fffff0!important;
+}
+.site-header {
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  transform: translateY(-10px); 
+}
+.site-header:hover {
+  background-color: #98c9ae !important;
+  transform: translateY(0); 
 }
 
 .hover-a {
@@ -46,7 +55,13 @@ section,.ast-woo-sidebar-widget,.ast-woocommerce-container,.woocommerce-product-
 
 .herosection {
   height: 600px !important;
+  cursor: grab;
 }
+
+.herosection:active {
+  cursor: grabbing;
+}
+
 
 @media (max-width: 575.98px) {
   .herosection {
@@ -210,7 +225,7 @@ a:hover {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #fffff0;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -462,3 +477,17 @@ padding: 15px 30px !important;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
     margin: 0;
   }
+@media (max-width: 768px) {
+  .custom-cursor,.custom-cursor-dot{
+    display: none !important;
+  }
+  .woocommerce-ordering {
+    text-align: left !important;
+    margin-left: 0 !important;
+    display: none !important;
+  }
+
+  .woocommerce-ordering select {
+    display: inline-block;
+  }
+}

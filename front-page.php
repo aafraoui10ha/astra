@@ -103,7 +103,7 @@
     <div class="container">
       <div class="row justify-content-center text-center">
         <div class="col-md-12 d-flex flex-column justify-content-center align-items-center text-center mb-5">
-          <h2 role="heading" class="text-uppercase" data-aos="fade-up" style="color: #477023;">Categories</h2>
+          <h2 role="heading" class="text-uppercase" data-aos="fade-up" style="color: #477023;">Filtrer par catégories</h2>
           <span class="line d-block mb-5"></span>
         </div>
 
@@ -153,7 +153,7 @@
 
       <div class="row align-items-center">
 
-        <!-- Colonne gauche : Titre + texte -->
+        <!-- collum left : Titre + texte -->
         <div class="col-md-8">
           <h2 class="text-uppercase font-weight-bold mb-3" data-aos="fade-right" data-aos-delay="300">
             Discover Our Organic & Natural Skin Products
@@ -169,7 +169,7 @@
           <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="btn1" aria-label="Découvrez nos produits de soin naturels" data-aos="fade-left" data-aos-delay="300">
             Découvrez nos produits
           </a>
-       
+
         </div>
 
       </div>
@@ -302,6 +302,34 @@
     </div>
   </section>
   <!-- end -->
+  <!-- section fin -->
+  <section>
+    <div class="row"
+      style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/skin-cleanser-template-about-page-header-img-bg.jpg'); height: 530px; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+
+      <div class="d-flex justify-content-end align-items-center" style="height: 530px; width: 100%;">
+
+        <div class="col-5 me-5">
+          <div class="p-5 text-center" style="background-color: rgba(255, 255, 255, 0.4); color: #000; ">
+            <div class="d-flex flex-column justify-content-center align-items-center text-center mb-5">
+              <h2 data-aos="fade-up" data-aos-delay="300">Prickly pears, but not only</h2>
+              <span class="line"></span>
+            </div>
+            <p data-aos="fade-left" data-aos-delay="300">
+              We are committed to a holistic approach that brings together all our convictions as a brand.
+              Whether in terms of formulation, ecology, people or our relationship with you.
+              Our 7 main commitments make up the charter of values that guides our daily choices, discover it now.
+            </p>
+            <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn1" data-aos="fade-right" data-aos-delay="300">Contact us</a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- end section fin -->
   <!-- section 5 -->
   <section>
     <div class="container my-5">
@@ -326,7 +354,7 @@
             $post_link  = get_permalink();
             $alt_text   = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
         ?>
-            <article class="col-12 col-md-6 col-lg-3 mb-3" itemscope itemtype="https://schema.org/BlogPosting">
+            <article class="col-12 col-md-6 col-lg-3 mb-1" itemscope itemtype="https://schema.org/BlogPosting">
               <a href="<?php echo esc_url($post_link); ?>" class="text-decoration-none" itemprop="url">
                 <div class="image-box position-relative overflow-hidden" data-aos="fade-right" data-aos-delay="<?php echo $delay; ?>">
                   <?php if ($image_url): ?>
@@ -354,19 +382,30 @@
       </div>
     </div>
   </section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center mb-5">
+            <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="btn1" aria-label="Voir tous les articles">
+              Voir tous les articles
+            </a>
+          </div>
+        </div>
+      </div>
+  </section>
 
 
 
-  <!-- section 5 end -->
-</div>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const lazyBg = document.querySelectorAll(".lazy-background");
-    lazyBg.forEach(el => {
-      const bg = el.getAttribute("data-bg");
-      if (bg) el.style.backgroundImage = `url('${bg}')`;
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const lazyBg = document.querySelectorAll(".lazy-background");
+      lazyBg.forEach(el => {
+        const bg = el.getAttribute("data-bg");
+        if (bg) el.style.backgroundImage = `url('${bg}')`;
+      });
     });
-  });
-</script>
+  </script>
 
-<?php get_footer(); ?>
+  <?php get_footer(); ?>
